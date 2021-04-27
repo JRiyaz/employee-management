@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Integer> {
 
     @Query("FROM EmployeeEntity e WHERE e.email = ?1")
-    public Optional<EmployeeEntity> findByEmail(final String email);
+    Optional<EmployeeEntity> findByEmail(final String email);
 }

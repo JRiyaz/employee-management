@@ -47,7 +47,7 @@ public class EmployeeEntity implements Serializable {
     private String email;
 
     @NotNull(message = "Designation field cannot be null")
-    @Size(min = 10, max = 50, message = "Designation should be min 10 or max 50 characters long")
+    @Size(min = 5, max = 50, message = "Designation should be min 10 or max 50 characters long")
     @Column(length = 50)
     private String designation;
 
