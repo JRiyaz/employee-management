@@ -20,6 +20,10 @@ public class EmployeeService {
         return repository.findById(id);
     }
 
+    public Optional<EmployeeEntity> findByEmail(final String email) {
+        return repository.findByEmail(email);
+    }
+
     public List<EmployeeEntity> findAll() {
         return repository.findAll();
     }
