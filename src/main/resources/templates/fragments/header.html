@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Header | Employee Management</title>
+</head>
+<body>
+<!-- ======= Navbar Section ======= -->
+
+<nav th:fragment="nav-bar" class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+
+    <!-- ======= Toast Section ======= -->
+    <div class="toast align-items-center text-white bg-primary border-2 text-white border-dark position-absolute d-none"
+         role="alert" aria-live="assertive" aria-atomic="true" id="toast">
+        <div class="d-flex">
+            <div class="toast-body">Hello, world! This is a toast message.</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+        </div>
+    </div>
+    <!-- End Toast -->
+
+    <!-- ======= Container-fluid Section ======= -->
+    <div class="container nav-content">
+        <a class="navbar-brand align-self-start text-white" th:href="@{/index}">Employee Management</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto px-2 row col-12 justify-content-end">
+                <li class="nav-item w-auto">
+                    <a class="nav-link text-center" aria-current="page"
+                       th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/all')} ? 'active' : ''"
+                       th:href="@{/employee/all}">All Employees</a>
+                </li>
+
+                <li class="nav-item w-auto">
+                    <a class="nav-link text-center" aria-current="page"
+                       th:classappend="${#strings.containsIgnoreCase(#httpServletRequest.requestURI, '/add')} ? 'active' : ''"
+                       th:href="@{/employee/add}">Add Employee</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- End Container-fluid -->
+</nav>
+<!-- End Navbar  -->
+</body>
+</html>
