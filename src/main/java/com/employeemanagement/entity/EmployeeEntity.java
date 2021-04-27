@@ -1,6 +1,7 @@
 package com.employeemanagement.entity;
 
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -20,7 +21,7 @@ public class EmployeeEntity implements Serializable {
     private int id;
 
     @NotNull(message = "Name field cannot be null")
-    @Size(min = 3, max = 50, message = "Name should be min 3 or max 50 characters long")
+    @Length(min = 3, max = 50, message = "Name should be min 3 or max 50 characters long")
     @Column(length = 50)
     private String name;
 
@@ -35,18 +36,18 @@ public class EmployeeEntity implements Serializable {
     private String gender;
 
     @NotNull(message = "Phone field cannot be null")
-    @Size(min = 10, max = 10, message = "Phone should be 10 characters long")
+    @Length(min = 10, max = 10, message = "Phone should be 10 characters long")
     @Column(length = 10)
     private String phone;
 
     @NotNull(message = "Email field cannot be null")
-    @Size(min = 10, max = 10, message = "Email should be min 10 or max 50 characters long")
-    @Column(length = 50)
     @Email(message = "Invalid Email ID")
+    @Length(min = 5, max = 50, message = "Email should be min 10 or max 50 characters long")
+    @Column(length = 50)
     private String email;
 
     @NotNull(message = "Designation field cannot be null")
-    @Size(min = 10, max = 10, message = "Designation should be min 10 or max 50 characters long")
+    @Size(min = 10, max = 50, message = "Designation should be min 10 or max 50 characters long")
     @Column(length = 50)
     private String designation;
 
