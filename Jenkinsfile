@@ -23,5 +23,11 @@ pipeline {
                 bat "mvn package -f employee-management"
             }
         }
+        stage('pwd') {
+            steps {
+//             The 'prod' profile is configured in application.properties
+                bat "pwd"
+            }
+        }
     }
 }

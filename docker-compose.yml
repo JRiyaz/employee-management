@@ -1,0 +1,18 @@
+version: '1.1'
+services:
+  app:
+    container_name: employee-management
+    image: employee-management
+    build: ./
+    ports:
+      - "8080:5555"
+    depends_on:
+      - postgresql-db
+  postgresqldb:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=employee_management
