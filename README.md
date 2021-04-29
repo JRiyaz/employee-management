@@ -95,12 +95,12 @@ sudo yum install jenkins
 sudo systemctl start jenkins
 ```
 
-**10. Check if Jenkins is running on port 8080 along with Private IPv4 addresses like:**
+**10. Check if Jenkins is running on port 8080 along with Public IPv4 addresses like:**
 ```bash
 Example:
-The IPv4 addresses of my instance is: 172.31.29.148
+The IPv4 addresses of my instance is: 34.207.111.203
 The Jenkins is running on 8080 port: 8080
-Finally, use both to view jenkins: '172.31.29.148:8080'
+Finally, use both to view jenkins: '34.207.111.203:8080'
 ```
 
 **11. For the first time Jenkins will ask for password, to find the password, 
@@ -152,9 +152,9 @@ sudo docker ps
 
 **17. Check if the app is running**
 ```bash
-The IPv4 addresses of my instance is: 172.31.29.148
+The IPv4 addresses of my instance is: 34.207.111.203
 Docker will start the app on port 5555
-Finally, use both to use the app: '172.31.29.148:5555'
+Finally, use both to use the app: '34.207.111.2038:5555'
 ```
 ![App Screenshot](images/20.app-running-on-port-5555.PNG)
 
