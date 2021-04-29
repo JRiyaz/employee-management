@@ -127,6 +127,11 @@ sudo systemctl start docker
 ```
 ![App Screenshot](images/13.install-docker.PNG)
 
+**13.1 Add the Jenkins user to the Docker group using following command in EC2 Instance console. For more details please visit this link: https://stackoverflow.com/questions/47854463/docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socke**
+```bash
+sudo The user jenkins needs to be added to the group docker
+```
+
 **14. Open Jenkins and create a pipeline job**
 ![App Screenshot](images/16.create-a-new-pipeline-job.PNG)
 
