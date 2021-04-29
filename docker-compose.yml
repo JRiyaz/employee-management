@@ -7,7 +7,7 @@ services:
     ports:
       - "8080:5555"
     depends_on:
-      - postgresql-db
+      - postgresqldb
   postgresqldb:
     image: postgres
     ports:

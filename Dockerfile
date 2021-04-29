@@ -1,2 +1,14 @@
+# Start with a base image containing Java runtime
 FROM openjdk:8-jdk-alpine
-ENTRYPOINT ["java", "-jar", "/home/ec2-user/employee_management/employee-management.jar"]
+
+# Add a volume pointing to /tmp
+VOLUME /tmp
+
+# Make port 8080 available to the world outside this container
+EXPOSE 8080
+
+# Add the application's jar to the container
+ADD target/employee-management.jar employee-management.jar
+
+# Run the jar file
+ENTRYPOINT ["java", "-jar", "employee-management.jar"]

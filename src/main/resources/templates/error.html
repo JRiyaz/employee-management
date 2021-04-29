@@ -5,7 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title th:text="${statusCode + ' Error | Kitchen Story'}">Error | Kitchen Story</title>
+    <title>Error | Riyaz J</title>
 
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700,900"
@@ -120,6 +120,7 @@
          margin: 0 !important
          }
 
+
     </style>
 </head>
 <body>
@@ -128,7 +129,10 @@
         <div class="notfound-404"
              th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
             <h1 th:text="${#strings.substring(httpStatus, 0, 3)}">404</h1>
-            <h2 th:text="${#strings.substring(httpStatus, 3, #strings.length(httpStatus))}">Page Not Found</h2>
+
+            <h2 th:text="${#strings.replace(#strings.substring(httpStatus, 3, #strings.length(httpStatus)),'_',' ')}">
+                Page Not Found
+            </h2>
         </div>
         <a th:href="@{/}" class="mx-3">Home Page</a>
     </div>

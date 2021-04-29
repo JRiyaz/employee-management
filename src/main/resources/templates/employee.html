@@ -24,11 +24,22 @@
     <th:block th:replace="fragments/header :: nav-bar"></th:block>
     <!--Nav-Bar Ends-->
 
-    <h1 class="text-warning text-center" th:if="${#lists.isEmpty(employees)}">Employee list is empty</h1>
-    <div class="text-center my-3" th:unless="${#lists.isEmpty(employees)}">
-        <h1 class="mb-3">List of Employees</h1>
+        <div class="row">
+            <h1 class="me-3 col-10">Employee Details</h1>
+            <div class="mx-3 col-auto my-auto">
+                <a th:href="@{/employee/delete/{id}(id = ${employee.id})}"
+                   class="text-decoration-none text-warning">
+                    <img th:src="@{/img/trash.svg}" alt="" width="20"/>
+                </a>
+            </div>
+            <div class="mx-3 col-auto my-auto">
+                <a th:href="@{/employee/update/{id}(id = ${employee.id})}" class="text-decoration-none text-info">
+                    <img th:src="@{/img/pencil.svg}" alt="" width="20"/>
+                </a>
+            </div>
+        </div>
 
-        <table class="table table-hover w-auto mx-auto">
+        <table class="table table-hover mx-auto">
             <thead>
             <tr>
             </tr>
@@ -64,7 +75,6 @@
             </tr>
             </tbody>
         </table>
-    </div>
 
     <!--Footer Starts-->
     <th:block th:replace="fragments/footer :: footer"></th:block>

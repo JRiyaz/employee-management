@@ -1,0 +1,55 @@
+pipeline {
+    agent any
+    stages {
+        stage('git repo clone') {
+            steps {
+                //bat "rmdir /s /q employee-management"
+                git branch: 'main', credentialsId: '07a542fd-de31-4624-8c88-9ee97e86056b', url: 'https://github.com/JRiyaz/employee-management.git'
+            }
+        }
+        stage('clean') {
+            steps {
+                bat "mvn clean -f employee-management"
+            }
+        }
+        stage('package') {
+            steps {
+//             The 'prod' profile is configured in application.properties
+                bat "mvn package -f employee-management"
+            }
+        }
+        stage('prepare files') {
+            steps {
+                dir('employee-management/target') {
+                    sh "mkdir employee-management"
+                    sh "cp ../Dockerfile employee-management"
+                    sh "cp ../docker-compose.yml employee-management"
+                    sh "cp employee-management.jar employee-management"
+                }
+            }
+        }
+        stage('copy files to aws') {
+            steps {
+                dir('employee-management/target') {
+                    sh "scp employee-management/* ec2-user@ec2-54-145-239-144.compute-1.amazonaws.com:/app"
+                }
+            }
+        }
+        stage('aws') {
+            steps {
+//             The 'prod' profile is configured in application.properties
+                sshagent(['AWS_EC2']) {
+                    sh '''
+                        ssh -tt ec2-user@ec2-54-145-239-144.compute-1.amazonaws.com "
+                            docker --version
+                            cd /app
+                            pwd
+                            ls
+                            exit
+                        "
+                    '''
+                }
+            }
+        }
+    }
+}

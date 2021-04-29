@@ -44,14 +44,14 @@
             </thead>
             <tbody>
             <tr th:each="employee : ${employees}">
-                <th scope="row" th:text="${employee.id}">
-                    <a th:href="@{/employee/{email}(email = ${employee.email})}"
+                <th scope="row" th:text="${employee.id}"></th>
+                <td>
+                    <a th:href="@{/employee/{id}(id = ${employee.id})}"
                        class="text-success"
-                       th:text="${employee.id}">
-                        1
+                       th:text="${employee.name}">
+                        name
                     </a>
-                </th>
-                <td th:text="${employee.name}">Mark</td>
+                </td>
                 <td th:text="${employee.email}">dummy@gmail.com</td>
                 <td th:text="${employee.gender}">Male</td>
                 <td th:text="${employee.age}">20</td>

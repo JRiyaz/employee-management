@@ -24,9 +24,9 @@ public class EmployeeController {
         return "employees";
     }
 
-    @GetMapping("{email}")
-    public String findByEmail(final @PathVariable String email, final Model model) {
-        model.addAttribute("employee", service.findByEmail(email));
+    @GetMapping("{id}")
+    public String findByEmail(final @PathVariable int id, final Model model) {
+        model.addAttribute("employee", service.findById(id).get());
         return "employee";
     }
 

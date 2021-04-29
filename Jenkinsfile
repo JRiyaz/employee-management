@@ -3,31 +3,28 @@ pipeline {
     stages {
         stage('git repo clone') {
             steps {
-//                 bat "rmdir  /s /q employee-management"
-                bat "git clone https://github.com/JRiyaz/employee-management.git"
+                git branch: 'main', url: 'https://github.com/JRiyaz/employee-management.git'
             }
         }
         stage('clean') {
             steps {
-                bat "mvn clean -f employee-management"
-            }
-        }
-        stage('test') {
-            steps {
-                bat "mvn test -P test -f employee-management"
+                sh "mvn clean"
             }
         }
         stage('package') {
             steps {
-//             The 'prod' profile is configured in application.properties
-                bat "mvn package -f employee-management"
+                sh "mvn package"
             }
         }
-        stage('pwd') {
+        stage('docker build') {
             steps {
-//             The 'prod' profile is configured in application.properties
-                bat "pwd"
+                sh "docker build -t employee-management ."
             }
+        }
+        stage('docker run') {
+             steps {
+                 sh "docker run -d -p 5555:8080 employee-management"
+             }
         }
     }
 }
